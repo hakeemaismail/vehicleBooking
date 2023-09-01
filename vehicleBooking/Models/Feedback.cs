@@ -17,6 +17,8 @@ namespace vehicleBooking.Models
 
         public Chauffeur chauffeur { get; set; }
         public long chauffeurId { get; set; }
+        public Booking booking { get; set; }
+        public long bookingId { get; set;}
     
     }
 }
