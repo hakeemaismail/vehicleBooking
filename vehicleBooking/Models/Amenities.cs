@@ -10,6 +10,7 @@ namespace vehicleBooking.Models
         public AmenityType AmenityType { get; set; }
         public long Price { get; set; }
 
-        public List<Vehicle> vehicles { get; set; }
+        //public List<Vehicle> vehicles { get; set; }
+        public List<VehicleAmenities>? VehicleAmenities { get; set; }
     }
 }

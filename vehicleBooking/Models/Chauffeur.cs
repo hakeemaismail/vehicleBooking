@@ -12,16 +12,19 @@ namespace vehicleBooking.Models
         public string Gender { get; set; }
 
         public string Email { get; set; }
-        public string UserName { get; set; }
         public string Password { get; set; }
 
         [Required]
         public int phoneNumber { get; set; }
 
         //Relationships
-        public List<Booking> Bookings { get; set; }
-        public List<Vehicle> vehicles { get; set; }
+        public List<Booking>? Bookings { get; set; }
+        //public List<Vehicle> vehicles { get; set; }
 
-        public List<Feedback> feedbacks { get; set; }
+        public List<Feedback>? feedbacks { get; set; }
+        public Company company { get; set; }
+        public long companyId { get; set; }
+
+        public List<VehicleChauffeur>? VehicleChauffeurs { get; set; }
     }
 }

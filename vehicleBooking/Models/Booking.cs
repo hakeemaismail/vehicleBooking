@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vehicleBooking.Models
 {
@@ -6,12 +7,15 @@ namespace vehicleBooking.Models
     {
         [Key]
         public long Id { get; set; }
-
         public string PickupLocation { get; set; }
         public string DropoffLocation { get; set; }
         public string? SpecialRequest { get; set; }
         public DateOnly Date { get; set; }
         public TimeOnly Time { get; set; }
+        public bool isCompleted { get; set; }
+        public int? noOfHours { get; set; }
+        public int? mileage { get; set; }
+        public int? dayCharge { get; set; }
 
         //Relationships
         public Passenger passenger { get; set; }

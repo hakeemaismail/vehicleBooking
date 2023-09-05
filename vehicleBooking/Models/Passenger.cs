@@ -10,13 +10,11 @@ namespace vehicleBooking.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public int PhoneNumber { get; set; }
-        public string UserName { get; set; }
         public string Password { get; set; }
         public string Gender { get; set; }
 
         //Relationships
         public List<Billing> billings { get; set; }
-
         public List<Feedback> feedbacks { get; set; }
         public List<Booking> bookings { get; set; }
 
