@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using vehicleBooking.Data;
+using vehicleBooking.Repository;
+using vehicleBooking.Repository.Interfaces;
+using vehicleBooking.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer
 (builder.Configuration.GetConnectionString("DefaultConnection"),x => x.UseDateOnlyTimeOnly()
 ));
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
 var app = builder.Build();
 

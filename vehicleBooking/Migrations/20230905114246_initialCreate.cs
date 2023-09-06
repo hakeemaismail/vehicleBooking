@@ -58,6 +58,18 @@ namespace vehicleBooking.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cost",
+                columns: table => new
+                {
+                    CostPerMile = table.Column<long>(type: "bigint", nullable: false),
+                    HourlyRate = table.Column<long>(type: "bigint", nullable: false),
+                    DayCharge = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Passenger",
                 columns: table => new
                 {
@@ -180,7 +192,7 @@ namespace vehicleBooking.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VehicleChauffeur",
+                name: "VehicleChauffeurs",
                 columns: table => new
                 {
                     VehicleId = table.Column<long>(type: "bigint", nullable: false),
@@ -188,14 +200,14 @@ namespace vehicleBooking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VehicleChauffeur", x => new { x.VehicleId, x.ChauffeurId });
+                    table.PrimaryKey("PK_VehicleChauffeurs", x => new { x.VehicleId, x.ChauffeurId });
                     table.ForeignKey(
-                        name: "FK_VehicleChauffeur_Chauffeur_ChauffeurId",
+                        name: "FK_VehicleChauffeurs_Chauffeur_ChauffeurId",
                         column: x => x.ChauffeurId,
                         principalTable: "Chauffeur",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_VehicleChauffeur_Vehicle_VehicleId",
+                        name: "FK_VehicleChauffeurs_Vehicle_VehicleId",
                         column: x => x.VehicleId,
                         principalTable: "Vehicle",
                         principalColumn: "Id");
@@ -329,8 +341,8 @@ namespace vehicleBooking.Migrations
                 column: "AmenityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VehicleChauffeur_ChauffeurId",
-                table: "VehicleChauffeur",
+                name: "IX_VehicleChauffeurs_ChauffeurId",
+                table: "VehicleChauffeurs",
                 column: "ChauffeurId");
         }
 
@@ -344,13 +356,16 @@ namespace vehicleBooking.Migrations
                 name: "Billing");
 
             migrationBuilder.DropTable(
+                name: "Cost");
+
+            migrationBuilder.DropTable(
                 name: "Feedback");
 
             migrationBuilder.DropTable(
                 name: "VehicleAmenities");
 
             migrationBuilder.DropTable(
-                name: "VehicleChauffeur");
+                name: "VehicleChauffeurs");
 
             migrationBuilder.DropTable(
                 name: "Bookings");

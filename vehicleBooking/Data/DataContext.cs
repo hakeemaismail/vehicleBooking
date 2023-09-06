@@ -18,6 +18,10 @@ namespace vehicleBooking.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Billing> Billing { get; set; }
         public DbSet<Amenities> Amenities { get; set; }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<Cost> Cost { get; set; }
+        public DbSet<VehicleAmenities> VehicleAmenities { get; set; }
+        public DbSet<VehicleChauffeur> VehicleChauffeurs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -97,6 +101,8 @@ namespace vehicleBooking.Data
               .WithMany(b => b.Chauffeurs)
               .HasForeignKey(b => b.companyId)
               .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Cost>().HasNoKey();
 
         }
     }

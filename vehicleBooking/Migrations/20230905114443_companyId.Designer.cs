@@ -12,8 +12,8 @@ using vehicleBooking.Data;
 namespace vehicleBooking.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230905090230_initialCreate")]
-    partial class initialCreate
+    [Migration("20230905114443_companyId")]
+    partial class companyId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -194,7 +194,7 @@ namespace vehicleBooking.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("companyId")
+                    b.Property<long?>("companyId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("phoneNumber")
@@ -233,6 +233,20 @@ namespace vehicleBooking.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Company");
+                });
+
+            modelBuilder.Entity("vehicleBooking.Models.Cost", b =>
+                {
+                    b.Property<long>("CostPerMile")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("DayCharge")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("HourlyRate")
+                        .HasColumnType("bigint");
+
+                    b.ToTable("Cost");
                 });
 
             modelBuilder.Entity("vehicleBooking.Models.Feedback", b =>
@@ -380,7 +394,7 @@ namespace vehicleBooking.Migrations
 
                     b.HasIndex("ChauffeurId");
 
-                    b.ToTable("VehicleChauffeur");
+                    b.ToTable("VehicleChauffeurs");
                 });
 
             modelBuilder.Entity("vehicleBooking.Models.Billing", b =>
@@ -434,8 +448,7 @@ namespace vehicleBooking.Migrations
                     b.HasOne("vehicleBooking.Models.Company", "company")
                         .WithMany("Chauffeurs")
                         .HasForeignKey("companyId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("company");
                 });

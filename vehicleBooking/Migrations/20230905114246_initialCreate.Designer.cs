@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vehicleBooking.Data;
 
@@ -11,9 +12,11 @@ using vehicleBooking.Data;
 namespace vehicleBooking.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230905114246_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,9 +174,6 @@ namespace vehicleBooking.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<bool>("AvailabiltyStatus")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -195,6 +195,7 @@ namespace vehicleBooking.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("companyId")
+                        .IsRequired()
                         .HasColumnType("bigint");
 
                     b.Property<int>("phoneNumber")
@@ -448,7 +449,8 @@ namespace vehicleBooking.Migrations
                     b.HasOne("vehicleBooking.Models.Company", "company")
                         .WithMany("Chauffeurs")
                         .HasForeignKey("companyId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("company");
                 });
