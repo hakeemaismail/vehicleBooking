@@ -17,10 +17,6 @@ namespace vehicleBooking.Models
 
         //Relationships
         public List<Booking>? bookings { get; set; }
-        //public Chauffeur chauffeur { get; set; }
-        //public long chauffeurId { get; set; }
-
-        //public List<Amenities> amenities { get; set; }
         public List<VehicleAmenities>? VehicleAmenities { get; set; }
         public List<VehicleChauffeur>? VehicleChauffeurs { get; set; }
 

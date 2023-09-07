@@ -1,4 +1,5 @@
 ﻿using vehicleBooking.Models;
+using vehicleBooking.Models.DTOs;
 
 namespace vehicleBooking.Repository.Interfaces
 {
@@ -14,12 +15,18 @@ namespace vehicleBooking.Repository.Interfaces
         bool UpdateChauffeur(Chauffeur chauffeur);  
         bool DeleteChauffeur(long id);
         Chauffeur UpdateAvailability(long chauffeurId, bool status);
-        
+        Chauffeur AssignVehicleToChauffeur(long vehicleId, long chauffeurId);
+        Chauffeur UpdateVehicleInformation(VehicleDTO vehicle, long id);
         Booking getBookingById (long id);
         List<Booking> GetBookings();
         List<Vehicle> GetVehicles();
+        List<Vehicle> filterVehicles(string term);
+        List<Booking> filterBookings(string term);
+        List<Passenger> filterPassenger(string term);
         Vehicle GetVehicle(long id);
-        List<Vehicle> ViewAvailableVehicles(bool status);
+        //Vehicle addVehicle(VehicleDTO vehicle);
+        List<Booking> viewBookingsOfASpecificPassenger(long id);
+        List<Vehicle> viewAvailableVehicles(bool status);
 
     }
 }

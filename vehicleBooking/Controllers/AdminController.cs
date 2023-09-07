@@ -4,7 +4,6 @@ using vehicleBooking.Models;
 using vehicleBooking.Models.DTOs;
 using vehicleBooking.Repository;
 using vehicleBooking.Repository.Interfaces;
-using vehicleBooking.Services;
 
 namespace vehicleBooking.Controllers
 {
@@ -19,7 +18,7 @@ namespace vehicleBooking.Controllers
             _repository = repository;
         }
 
-        [HttpPost]
+        [HttpPost("createChauffeur")]
         public async Task<ActionResult<Chauffeur>> CreateChauffeur(ChauffeurDto chauffeurDto)
         {
             var Chauffeur = new Chauffeur
@@ -35,16 +34,22 @@ namespace vehicleBooking.Controllers
             return Ok(Chauffeur);
         }
 
-        [HttpGet]
+        [HttpGet("getAllChauffeurs")]
         public async Task<ActionResult<List<Chauffeur>>> GetAllChauffeurs()
         {
             return _repository.GetChauffeurs();
         }
 
-        [HttpPatch]
+        [HttpPatch("updateAvailability")]
         public Chauffeur UpdateAvailabilty(long id, bool status)
         {
             return _repository.UpdateAvailability(id, status);
+        }
+
+        [HttpPost("assignVehicle")]
+        public Chauffeur AssignVehicleToChauffeur(long vehicleId, long chauffeurId)
+        {
+            return _repository.AssignVehicleToChauffeur(vehicleId, chauffeurId);
         }
     }
 }
