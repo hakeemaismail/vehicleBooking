@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace vehicleBooking.Models
 {
@@ -14,6 +15,7 @@ namespace vehicleBooking.Models
         public string Gender { get; set; }
 
         //Relationships
+        [JsonIgnore]
         public List<Billing> billings { get; set; }
         public List<Feedback> feedbacks { get; set; }
         public List<Booking> bookings { get; set; }

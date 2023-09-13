@@ -11,6 +11,7 @@ namespace vehicleBooking.Models.DTOs
 
         public string Email { get; set; }
         public string Password { get; set; }
+        public bool AvailabiltyStatus { get; set; }
 
         [Required]
         public int phoneNumber { get; set; }

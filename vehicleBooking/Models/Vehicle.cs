@@ -14,6 +14,7 @@ namespace vehicleBooking.Models
         public string? Location { get; set; }
         public bool Availablity { get; set; } = true;
         public VehicleBrand Brand { get; set; }
+        public bool isActive { get; set; } = true;
 
         //Relationships
         public List<Booking>? bookings { get; set; }
