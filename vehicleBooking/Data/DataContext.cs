@@ -22,6 +22,7 @@ namespace vehicleBooking.Data
         public DbSet<Cost> Cost { get; set; }
         public DbSet<VehicleAmenities> VehicleAmenities { get; set; }
         public DbSet<VehicleChauffeur> VehicleChauffeurs { get; set; }
+        public DbSet<BookingAmenities> BookingAmenities { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -51,6 +52,19 @@ namespace vehicleBooking.Data
                     .HasOne(p => p.Chauffeur)
                     .WithMany(pc => pc.VehicleChauffeurs)
                     .HasForeignKey(c => c.ChauffeurId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<BookingAmenities>()
+                   .HasKey(pc => new { pc.BookingId, pc.AmenityId });
+            modelBuilder.Entity<BookingAmenities>()
+                    .HasOne(p => p.Booking)
+                    .WithMany(pc => pc.BookingAmenities)
+                    .HasForeignKey(p => p.BookingId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<BookingAmenities>()
+                    .HasOne(p => p.Amenities)
+                    .WithMany(pc => pc.BookingAmenities)
+                    .HasForeignKey(c => c.AmenityId)
                     .OnDelete(DeleteBehavior.NoAction);
 
 

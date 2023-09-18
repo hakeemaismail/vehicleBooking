@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace vehicleBooking.Models
 {
@@ -18,6 +19,7 @@ namespace vehicleBooking.Models
         public int? dayCharge { get; set; }
 
         //Relationships
+        [JsonIgnore]
         public Passenger passenger { get; set; }
         public long passengerId { get; set; }
 
@@ -29,5 +31,6 @@ namespace vehicleBooking.Models
 
         public Billing billing { get; set; }
         public Feedback feedback { get; set; }
+        public List<BookingAmenities>? BookingAmenities { get; set; }
     }
 }

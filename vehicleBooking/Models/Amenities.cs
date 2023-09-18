@@ -12,5 +12,6 @@ namespace vehicleBooking.Models
 
         //public List<Vehicle> vehicles { get; set; }
         public List<VehicleAmenities>? VehicleAmenities { get; set; }
+        public List<BookingAmenities>? BookingAmenities { get; set; }
     }
 }

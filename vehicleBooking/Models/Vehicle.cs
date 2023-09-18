@@ -20,7 +20,6 @@ namespace vehicleBooking.Models
         public List<Booking>? bookings { get; set; }
         public List<VehicleAmenities>? VehicleAmenities { get; set; }
         public List<VehicleChauffeur>? VehicleChauffeurs { get; set; }
-
         public List<Feedback>? Feedbacks { get; set;}
 
 

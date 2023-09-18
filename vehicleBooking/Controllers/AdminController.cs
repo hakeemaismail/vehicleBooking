@@ -325,7 +325,7 @@ namespace vehicleBooking.Controllers
         {
             var passenger = _repository.filterBasedOnEmail(email);
 
-            if (passenger == new Passenger() || passenger == null)
+            if (passenger == null)
             {
               return NotFound("No passengers found with that email address");
             }
