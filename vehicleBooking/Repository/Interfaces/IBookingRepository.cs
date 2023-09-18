@@ -9,7 +9,7 @@ namespace vehicleBooking.Repository.Interfaces
         bool makeABooking(long vehicleId, List<long> selectedAmenityIds, BookingDTO booking);
         List<Vehicle> GetAllVehicles();
         List<Amenities> GetAllAmenities(long vehicleId);
-       bool SelectAmenities(long vehicleId, List<long> selectedAmenityIds);
+       //bool SelectAmenities(long vehicleId, List<long> selectedAmenityIds);
 
     }
 }

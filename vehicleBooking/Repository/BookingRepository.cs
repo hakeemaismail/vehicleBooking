@@ -31,30 +31,30 @@ namespace vehicleBooking.Repository
             throw new NotImplementedException();
         }
 
-        public bool SelectAmenities(long vehicleId, List<long> selectedAmenityIds)
-        {
-            var vehicle = _context.Vehicle.FirstOrDefault(x => x.Id == vehicleId);
-            if (vehicle == null)
-            {
-                return false;
-            }
+        //public bool SelectAmenities(long vehicleId, List<long> selectedAmenityIds)
+        //{
+        //    var vehicle = _context.Vehicle.FirstOrDefault(x => x.Id == vehicleId);
+        //    if (vehicle == null)
+        //    {
+        //        return false;
+        //    }
 
-            foreach(var amenityId in selectedAmenityIds) 
-            {
-                var amenity = _context.Amenities.FirstOrDefault(c => c.Id == amenityId);
-                if (amenity != null) 
-                {
-                    var vehicleAmenities = new VehicleAmenities
-                    {
-                        AmenityId = amenityId,
-                        VehicleId = vehicleId
-                    };
-                    _context.VehicleAmenities.Add(vehicleAmenities);
-                }
-            }
-            _context.SaveChanges();
-            return true;
-        }
+        //    foreach(var amenityId in selectedAmenityIds) 
+        //    {
+        //        var amenity = _context.Amenities.FirstOrDefault(c => c.Id == amenityId);
+        //        if (amenity != null) 
+        //        {
+        //            var vehicleAmenities = new VehicleAmenities
+        //            {
+        //                AmenityId = amenityId,
+        //                VehicleId = vehicleId
+        //            };
+        //            _context.VehicleAmenities.Add(vehicleAmenities);
+        //        }
+        //    }
+        //    _context.SaveChanges();
+        //    return true;
+        //}
 
         public bool makeABooking(long vehicleId, List<long> selectedAmenityIds, BookingDTO booking)
         {
@@ -71,9 +71,11 @@ namespace vehicleBooking.Repository
                 SpecialRequest = booking.SpecialRequest,
                 Date = booking.Date,
                 Time = booking.Time,
-                VehicleId = vehicleId
+                VehicleId = vehicleId,
+               
             };
-            
+            _context.Bookings.Add(newBooking);
+            _context.SaveChanges();
 
             foreach (var amenityId in selectedAmenityIds)
             {
@@ -86,11 +88,9 @@ namespace vehicleBooking.Repository
                         BookingId = newBooking.Id
                     };
                     _context.BookingAmenities.Add(bookingAmenities);
-                    _context.SaveChanges();
-
-                }
+                }      
             }
-
+            _context.SaveChanges();
             return true;
 
         }

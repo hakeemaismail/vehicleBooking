@@ -19,18 +19,17 @@ namespace vehicleBooking.Models
         public int? dayCharge { get; set; }
 
         //Relationships
-        [JsonIgnore]
-        public Passenger passenger { get; set; }
-        public long passengerId { get; set; }
+        public Passenger? passenger { get; set; }
+        public long? passengerId { get; set; }
 
-        public Vehicle vehicle { get; set; }
-        public long VehicleId { get; set;}
+        public Vehicle? vehicle { get; set; }
+        public long? VehicleId { get; set;}
 
-        public Chauffeur chauffeurs { get; set; }
-        public long chauffeurId { get; set;}
+        public Chauffeur? chauffeurs { get; set; }
+        public long? chauffeurId { get; set;}
 
-        public Billing billing { get; set; }
-        public Feedback feedback { get; set; }
+        public Billing? billing { get; set; }
+        public Feedback? feedback { get; set; }
         public List<BookingAmenities>? BookingAmenities { get; set; }
     }
 }

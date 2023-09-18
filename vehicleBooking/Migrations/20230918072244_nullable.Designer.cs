@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vehicleBooking.Data;
 
@@ -11,9 +12,11 @@ using vehicleBooking.Data;
 namespace vehicleBooking.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230918072244_nullable")]
+    partial class nullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,10 +134,10 @@ namespace vehicleBooking.Migrations
                     b.Property<TimeOnly>("Time")
                         .HasColumnType("time");
 
-                    b.Property<long?>("VehicleId")
+                    b.Property<long>("VehicleId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("chauffeurId")
+                    b.Property<long>("chauffeurId")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("dayCharge")
@@ -149,7 +152,7 @@ namespace vehicleBooking.Migrations
                     b.Property<int?>("noOfHours")
                         .HasColumnType("int");
 
-                    b.Property<long?>("passengerId")
+                    b.Property<long>("passengerId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -439,17 +442,20 @@ namespace vehicleBooking.Migrations
                     b.HasOne("vehicleBooking.Models.Vehicle", "vehicle")
                         .WithMany("bookings")
                         .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("vehicleBooking.Models.Chauffeur", "chauffeurs")
                         .WithMany("Bookings")
                         .HasForeignKey("chauffeurId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("vehicleBooking.Models.Passenger", "passenger")
                         .WithMany("bookings")
                         .HasForeignKey("passengerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("chauffeurs");
 
