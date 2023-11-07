@@ -13,6 +13,7 @@ namespace vehicleBooking.Repository.Interfaces
         Chauffeur GetChauffeur(long id);
         Chauffeur UpdateChauffeur(long id, ChauffeurDto chauffeurDto);
         //Chauffeur UpdateChauffeur(long id);
+        //Chauffeur UpdateChauffeur(long id, Chauffeur chauffeur);
         bool DeleteChauffeur(long id);
         Chauffeur UpdateAvailability(long chauffeurId, bool status); //done
        bool AssignVehicleToChauffeur(long vehicleId, long chauffeurId); //done

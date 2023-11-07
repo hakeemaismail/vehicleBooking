@@ -66,8 +66,22 @@ namespace vehicleBooking.Repository
                 _context.SaveChanges();
             }
 
-            return chauffeur; 
+            return chauffeur;
         }
+
+        //public Chauffeur UpdateChauffeur(long chauffeurId, Chauffeur chauffeur)
+        //{
+        //    if (chauffeurId != chauffeur.Id)
+        //    { 
+        //        return new Chauffeur();
+        //    }
+        //    else 
+        //    { 
+        //    _context.Entry(chauffeur).State = EntityState.Modified;
+        //    _context.SaveChanges();
+        //    return chauffeur;
+        //    }
+        //}
         public Chauffeur UpdateAvailability(long chauffeurId, bool status)
         {
             var chauffeur = _context.Chauffeur.FirstOrDefault(c => c.Id == chauffeurId);

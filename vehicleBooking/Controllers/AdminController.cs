@@ -55,7 +55,7 @@ namespace vehicleBooking.Controllers
             return Ok(chauffeur);
         }
 
-       
+
         [HttpPut("updateChauffeur/{chauffeurId}")]
         public IActionResult UpdateChauffeur(long chauffeurId, ChauffeurDto updatedChauffeur)
         {
@@ -70,12 +70,31 @@ namespace vehicleBooking.Controllers
 
             if (updated != null)
             {
-                return Ok(updated); 
+                return Ok(updated);
             }
 
-            return StatusCode(500); 
+            return StatusCode(500);
         }
 
+        //[HttpPut("updateChauffeur/{chauffeurId}")]
+        //public IActionResult UpdateChauffeur(long chauffeurId, Chauffeur updatedChauffeur)
+        //{
+        //    var chauffeur = _repository.GetChauffeur(chauffeurId);
+
+        //    if (chauffeur == null)
+        //    {
+        //        return NotFound("Chauffeur not found");
+        //    }
+
+        //    var updated = _repository.UpdateChauffeur(chauffeurId, updatedChauffeur);
+
+        //    if (updated != null)
+        //    {
+        //        return Ok(updated);
+        //    }
+
+        //    return StatusCode(500);
+        //}
 
         [HttpPatch("updateAvailability")]
         public IActionResult UpdateAvailabilty(long id, bool status)
